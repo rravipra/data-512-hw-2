@@ -20,6 +20,18 @@ API info: [The API Info](https://www.mediawiki.org/wiki/API:Info)
 
 The data can be acquired from the [MediaWiki REST API for the EN Wikipedia](https://www.mediawiki.org/wiki/API:Main_page) for the page_info from which you can extract the 'title' and the 'lastrevid' which you will need to then use it to extract the ORES scores from the LiftWing ML Service API.
 
+Get your access token to get the data:
+
+You will need a Wikimedia user account to get access to Lift Wing (the ML API service). You can either [create an account or login](https://api.wikimedia.org/w/index.php?title=Special:UserLogin). If you have a Wikipedia user account - you might already have an Wikimedia account. If you are not sure try your Wikipedia username and password to check it. If you do not have a Wikimedia account you will need to create an account that you can use to get an access token.
+
+There is [a 'guide' that describes how to get authentication tokens](https://api.wikimedia.org/wiki/Authentication) - but not everything works the way it is described in that documentation. You should review that documentation and then read the rest of this comment.
+
+The documentation talks about using a "dashboard" for managing authentication tokens. That's a rather generous description for what looks like a simple list of token things. You might have a hard time finding this "dashboard". First, on the left hand side of the page, you'll see a column of links. The bottom section is a set of links titled "Tools". In that section is a link that says [Special pages](https://api.wikimedia.org/wiki/Special:SpecialPages) which will take you to a list of ... well, special pages. At the very bottom of the "Special pages" page is a section titled "Other special pages" (scroll all the way to the bottom). The first link in that section is called [API keys](https://api.wikimedia.org/wiki/Special:AppManagement). When you get to the "API keys" page you can create a new key.
+
+The authentication guide suggests that you should create a server-side app key. This does not seem to work correctly - as yet. It failed on multiple attempts when I attempted to create a server-side app key. BUT, there is an option to create a [Personal API token](https://api.wikimedia.org/wiki/Authentication) that should work for this course and the type of ORES page scoring that you will need to perform.
+
+Note, when you create a Personal API token you are granted the three items - a Client ID, a Client secret, and a Access token - you shold save all three of these. When you dismiss the box they are gone. If you lose any one of the tokens you can destroy or deactivate the Personal API token from the dashboard and then create a new one.
+
 # Code files:
 
 The notebook files in this repository are present in the folder called Code_files and the files in that are:
