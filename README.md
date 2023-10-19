@@ -50,35 +50,36 @@ Combining_and_Analysis.ipynb: This file consists of that analysis and combining 
 3) wp_scored_city_articles_by_state.csv
 
 **Structure of the CSV files:**
-For ores_scores.csv 
 
-**title**: The title (i.e the city, state).
+**For ores_scores.csv** 
 
-**rev_id**: The last revision id.
+   **title**: The title (i.e the city, state).
+   
+   **rev_id**: The last revision id.
+   
+   **prediction**: The prediction retrieved from the ORES scores.
 
-**prediction**: The prediction retrieved from the ORES scores.
+**For page_info_per_city.csv**
 
-For page_info_per_city.csv
+   **title**: The title (i.e the city, state).
+   
+   **rev_id**: The last revision id.
+   
+   (Note: This file is created to get the last revision ids for each of the titles which is then used to retrieve the ORES scores) (Please refer to the notebooks for more info)
 
-**title**: The title (i.e the city, state).
+**For wp_scored_city_articles_by_state.csv**
 
-**rev_id**: The last revision id.
+   **state**: The state in U.S.
+   
+   **regional_division**: The division that the state belongs to.
+   
+   **population**: The population of that particular state.
+   
+   **revision_id**: The last revision id.
+   
+   **article_quality**: This is the same as the prediction from the ORES scores.
 
-(Note: This file is created to get the last revision ids for each of the titles which is then used to retrieve the ORES scores) (Please refer to the notebooks for more info)
-
-For wp_scored_city_articles_by_state.csv
-
-**state**: The state in U.S.
-
-**regional_division**: The division that the state belongs to.
-
-**population**: The population of that particular state.
-
-**revision_id**: The last revision id.
-
-**article_quality**: This is the same as the prediction from the ORES scores.
-
-Example structure of the json files for the page info and the ORES scores (this is extracted from the title and the last revision id).
+Example structure of the json files for the page info and the ORES scores (the ores scores are extracted by using the title and the last revision id).
 
 ```python
 Getting page info data for: Northern flicker
