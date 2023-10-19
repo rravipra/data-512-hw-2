@@ -50,7 +50,7 @@ Combining_and_Analysis.ipynb: This file consists of that analysis and combining 
 3) wp_scored_city_articles_by_state.csv
 
 **Structure of the CSV files:**
-For ores_scores.csv
+For ores_scores.csv 
 
 **title**: The title (i.e the city, state).
 
@@ -63,6 +63,8 @@ For page_info_per_city.csv
 **title**: The title (i.e the city, state).
 
 **rev_id**: The last revision id.
+
+(Note: This file is created to get the last revision ids for each of the titles which is then used to retrieve the ORES scores) (Please refer to the notebooks for more info)
 
 For wp_scored_city_articles_by_state.csv
 
