@@ -3,114 +3,136 @@
 # Goal:
 
 The goal of this project is to explore the concept of bias in data using Wikipedia articles. It will consider articles about cities in different US state and I will combine a dataset of Wikipedia articles with a dataset of state populations, and use a machine learning service called ORES to estimate the quality of the articles about the cities.
+ 
+I will also be performing an analysis of how the coverage of US cities on Wikipedia and how the quality of articles about cities varies among states. My analysis will consist of a series of tables that show:
+
+1) The states with the greatest and least coverage of cities on Wikipedia compared to their population.
+2) The states with the highest and lowest proportion of high quality articles about cities.
+3) A ranking of US geographic regions by articles-per-person and proportion of high quality articles.
 
 # Data:
 
-API Licensed under: [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) and [GFDL](https://www.gnu.org/licenses/fdl-1.3.html)
+Getting quality scores from a Machine Learning system [ORES](https://www.mediawiki.org/wiki/ORES) and these labelings were learned based on articles in Wikipedia that were peer-reviewed using the [Wikipedia content assessment](https://en.wikipedia.org/wiki/Wikipedia:Content_assessment) procedures
 
-API endpoint: [endpoint](https://wikimedia.org/api/rest_v1/#!/Pageviews_data/get_metrics_pageviews_aggregate_project_access_agent_granularity_start_end)  
+The example notebook code is licensed under: [Creative Commons](https://creativecommons.org) and [CC-BY license](https://creativecommons.org/licenses/by/4.0/)
 
-API Request Pageviews Endpoint: https://wikimedia.org/api/rest_v1/metrics/pageviews/
+API info: [The API Info](https://www.mediawiki.org/wiki/API:Info)
 
-Terms and conditions: https://www.mediawiki.org/wiki/REST_API#Terms_and_conditions
-
-API Documentation:  https://wikitech.wikimedia.org/wiki/Analytics/AQS/Pageviews
-
-The data can be acquired from the API request endpoint, please refer to the code files (i.e notebook) in this repository for the code on how to do that.
+The data can be acquired from the [MediaWiki REST API for the EN Wikipedia](https://www.mediawiki.org/wiki/API:Main_page) for the page_info from which you can extract the 'title' and the 'lastrevid' which you will need to then use it to extract the ORES scores from the LiftWing ML Service API.
 
 # Code files:
 
-The only notebook file in this repository is the 512_HW1_code.ipynb file. This file consists of the some code in the beginning from the [example notebook](https://colab.research.google.com/corgiredirector?site=https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1XjFhd3eXx704tcdfQ4Q1OQn0LWKCRNJm%2Fview%3Fusp%3Dsharing) with a few changes which I have explicitly mentioned in the notebook. The notebook then consists of the code for acquiring the data from the Pageviews API and saving them as JSON files based on the type of access. Finally, it consists of the code for data analysis and creating time series graphs to get insights on that data based on a few specific questions which you can read through in the notebook.
+The notebook files in this repository are:
+
+get_ores_scores.ipynb : This file consists of the some code in the beginning from the [wp_page_info_example.ipynb](https://drive.google.com/drive/folders/1FtvWV31DHE8HIMdEsPGuCXPz0PMvShfl) with a few changes which I have explicitly mentioned in the notebook.
+
+get_page_info.ipynb : This file consists of the some code in the beginning from the [wp_ores_liftwing_example.ipynb](https://drive.google.com/drive/folders/1FtvWV31DHE8HIMdEsPGuCXPz0PMvShfl) with a few changes which I have explicitly mentioned in the notebook.
+
+Combining_and_Analysis.ipynb file
 
 
 # Data Files created from the code:
 
-1) academy_monthly_desktop_20150101-20230401.json
-2) academy_monthly_mobile_20150101-20230401.json
-3) academy_monthly_cumulative_20150101-20230401.json
+1) ores_scores.csv
+2) wp_scored_city_articles_by_state.csv
 
-All of these can be found in the JSON_files.rar folder from where you can extract it from.
+**Structure of the CSV files:**
+For ores_scores.csv
 
-**Structure of the JSON files:**
+**title**: The title (i.e the city, state).
 
-**Key**: The movie (or article) name, e.g., "Everything Everywhere All at Once".
+**rev_id**: The last revision id.
 
-**Value**: A list of dictionaries. Each dictionary provides data about monthly views for the corresponding movie on Wikipedia.
+**prediction**: The prediction retrieved from the ORES scores.
 
-**Fields in the Dictionary:**
-**project**: The Wikipedia project. In this case, it's "en.wikipedia", which refers to the English version of Wikipedia.
 
-**article**: The Wikipedia article's name, using underscores in place of spaces. This matches the key of the outer dictionary. Example: "Everything_Everywhere_All_at_Once".
+For wp_scored_city_articles_by_state.csv
 
-**granularity**: The granularity of the view data. It's "monthly" for our dataset, which means each entry represents one month's views.
+**state**: The state in U.S.
 
-**timestamp**: A timestamp indicating the starting time of the data. The format is YYYYMMDDHH. For example, "2020010100" refers to January 1, 2020, at 00:00 hours.
+**regional_division**: The division that the state belongs to.
 
-**agent**: The type of agent accessing the article. In this dataset, it's always "user", referring to human readers as opposed to bots or web crawlers.
+**population**: The population of that particular state.
 
-**views**: The number of views for the article in the corresponding month. This is an integer value. For example, in January 2020, the article "Everything Everywhere All at Once" was viewed 1,209 times.
+**revision_id**: The last revision id.
 
-Example structure:
+**article_quality**: This is the same as the prediction from the ORES scores.
+
+Example structure of the json files for the page info and the ORES scores (this is extracted from the title and the last revision id).
 
 ```python
+Getting page info data for: Northern flicker
 {
-    'article1' : [
-        {
-            "project": "en.wikipedia", 
-            "article": article1,
-            "granularity": "monthly",
-            "timestamp": month1_article1,
-            "agent": "user",
-            "views" : num_views_1_article1
-        },
-        {
-            "project": "en.wikipedia", 
-            "article": article1,
-            "granularity": "monthly",
-            "timestamp": month2_article1,
-            "agent": "user",
-            "views" : num_views_2_article1
-        },
-        ...
-    ],
-    'article2': [
-        {
-            "project": "en.wikipedia", 
-            "article": article2,
-            "granularity": "monthly",
-            "timestamp": month1_article2,
-            "agent": "user",
-            "views" : num_views_1_article2
-        },    
-        {
-            "project": "en.wikipedia", 
-            "article": article2,
-            "granularity": "monthly",
-            "timestamp": month1_article1,
-            "agent": "user",
-            "views" : num_views_2_article2
-        },
-        ...
-    ]
+    "351590": {
+        "pageid": 351590,
+        "ns": 0,
+        "title": "Northern flicker",
+        "contentmodel": "wikitext",
+        "pagelanguage": "en",
+        "pagelanguagehtmlcode": "en",
+        "pagelanguagedir": "ltr",
+        "touched": "2023-10-18T00:13:37Z",
+        "lastrevid": 1179719310,
+        "length": 27754,
+        "watchers": 105,
+        "talkid": 8324488,
+        "fullurl": "https://en.wikipedia.org/wiki/Northern_flicker",
+        "editurl": "https://en.wikipedia.org/w/index.php?title=Northern_flicker&action=edit",
+        "canonicalurl": "https://en.wikipedia.org/wiki/Northern_flicker"
+    }
 }
 ```
 
-Here month1_article1 is the first month of article1 and month2_article2 is the second month of article2. The format is mentioned above in the structure. The same with views num_views_1_article1 is the number of views of article1 for the first month and num_views_2_article1 is the number of views of article1 for the second month and so on.
+```python
+Getting LiftWing ORES scores for 'Bison' with revid: 1085687913
+{
+    "enwiki": {
+        "models": {
+            "articlequality": {
+                "version": "0.9.2"
+            }
+        },
+        "scores": {
+            "1085687913": {
+                "articlequality": {
+                    "score": {
+                        "prediction": "FA",
+                        "probability": {
+                            "B": 0.07895665991827401,
+                            "C": 0.03728215742560417,
+                            "FA": 0.5629436065906797,
+                            "GA": 0.30547854835374505,
+                            "Start": 0.011061807252218824,
+                            "Stub": 0.00427722045947826
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
 
-# Images of graphs acquired from the code outputs:
 
-The code also outputs 3 Time Series graphs of which I have taken screenshots of, the three files for that in this folder would be:
-1) Graph1.png
-2) Graph2.png
-3) Graph3.png
+# Research Implications:
 
-The naming conventions are the same as in the notebook which would make it easier to refer to and to reproduce it.
+Over the span of this project I got a much better understanding and hands on experience with using APIs and how we are able to extract data by making API calls. Any data science project as you know begins with having the right data and to have the skills/knowledge to know where to get/extract the data from. This project provided me with the resource and hands on experience to exactly do that in one of the ways which is by extracting data by making API calls. Further, I also learned and noticed that the ORES predictions are pretty generous when compared to the peer reviewed journals. Something that I noticed was the fact that Wikipedia might not necessarily be the best data source if we want to produce high quality research results.
 
-# Considerations with the Data:
+I found out that some states that have much lower population seem to produce the best quality articles and also the fact that higher the number of articles does not necessarily mean that the particular state has a higher value for the number of high quality articles per capita based on the population of that state. For example even though Pennsylvania and Michigan had way more number of articles than states like South Dakota or Vermont (ie. approximately more than 5x the number of articles) they were ranked much lower in terms of the highest quality of articles based on the population of that state. So it can be said that there is a much higher quality in states like Vermont and South Dakota since it represents the quality per population much better.
 
-- It is important to note that data for every day from the start date to the end date which you are trying to extract the data from will not necessarily be available. There are a lot of days for which the data is not present. You could refer to the outputs of the DataFrame in the notebook (512_HW1_code.ipynb) of the data that we acquire that there are many NA values.
+Something that surprised me about the findings was the fact that none of the top states in the US that are considered to have the best educational institutions, libraries etc. directly reflected the highest quality of articles. For example: it was surprising to see New York, California and Florida in the bottom 10 of the states that produced the highest quality articles. They are also the states in the US that fall in the top 10 most literate states whereas I noticed that states like Vermont, South Dakota which comparatively have a much lower literacy rate and population seemed to have much higher quality of articles.
 
-- Another thing to keep in mind is that in the request_pageviews_per_article function from the example notebook where the urllib.parse.quote function is used I have added an extra parameter safe = '' so that there are no issues while acquiring the data. In the example notebook the code does not add that parameter and based on the articles that you are trying to extract the data for you might run into issues such as 'KeyError' so I would recommend that you add that parameter.
+Answering specific questions:
 
+What biases did you expect to find in the data (before you started working with it), and why?
 
+Before I started working with the data, I expected to find biases towards states with larger cities, popular landmarks, and those having a rich historical background. The reason for that was primarily because the mentioned factors often contribute to a state's prominence and representation in public discourse and thus leading to more articles and potentially higher quality content.
+
+What (potential) sources of bias did you discover in the course of your data processing and analysis?
+
+Upon closer examination of the data, there were several potential sources of bias that became evident. Editorial focus appeared to play a significant role, with certain states possibly having a more active Wikipedia contributor community. Additionally, there was an indication that states with better access to resources, like academic institutions or libraries, had articles of superior quality.States with better access to resources did not seem to necessariy have the top articles per capita with the highest quality.
+
+What might your results suggest about (English) Wikipedia as a data source?
+
+As wikipedia is crowd sourced I would say that it is not necessarily the best data source to get the best quality results. The results show that the top states in the US that have a better access to resources, like academic institutions, are not necessarily the states that provide articles of superior quality. This is not something that you would expect in the results so it can be inferred that data sources other than wikipedia also need to be taken into consideration for a better analysis to give us the best results.
 
