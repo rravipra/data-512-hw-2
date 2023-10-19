@@ -12,13 +12,23 @@ I will also be performing an analysis of how the coverage of US cities on Wikipe
 
 # Data:
 
-Getting quality scores from a Machine Learning system [ORES](https://www.mediawiki.org/wiki/ORES) and these labelings were learned based on articles in Wikipedia that were peer-reviewed using the [Wikipedia content assessment](https://en.wikipedia.org/wiki/Wikipedia:Content_assessment) procedures
+**(Note: Please refer to the documentation in the notebooks for detailed information regarding the below links and how they are used to extract the data:)**
 
-The example notebook code is licensed under: [Creative Commons](https://creativecommons.org) and [CC-BY license](https://creativecommons.org/licenses/by/4.0/)
+The data can be acquired from the [MediaWiki REST API for the EN Wikipedia](https://www.mediawiki.org/wiki/API:Main_page) for the page_info from which you can extract the 'title' and the 'lastrevid' which you will need to then use it to extract the ORES scores from the LiftWing ML Service API. (Please refer to the code in the notebooks for more info on how to extract the data)
 
 API info: [The API Info](https://www.mediawiki.org/wiki/API:Info)
 
-The data can be acquired from the [MediaWiki REST API for the EN Wikipedia](https://www.mediawiki.org/wiki/API:Main_page) for the page_info from which you can extract the 'title' and the 'lastrevid' which you will need to then use it to extract the ORES scores from the LiftWing ML Service API.
+Getting quality scores from a Machine Learning system [ORES](https://www.mediawiki.org/wiki/ORES) and these labelings were learned based on articles in Wikipedia that were peer-reviewed using the [Wikipedia content assessment](https://en.wikipedia.org/wiki/Wikipedia:Content_assessment) procedures
+
+The ORES API documentation: https://ores.wikimedia.org
+
+The ORES LiftWing documentation: https://wikitech.wikimedia.org/wiki/Machine_Learning/LiftWing/Usage
+
+API portal: https://api.wikimedia.org/wiki/Main_Page
+
+LiftWing: https://wikitech.wikimedia.org/wiki/Machine_Learning/LiftWing
+
+The two example notebook [wp_page_info_example.ipynb](https://drive.google.com/drive/folders/1FtvWV31DHE8HIMdEsPGuCXPz0PMvShfl) and [wp_ores_liftwing_example.ipynb](https://drive.google.com/drive/folders/1FtvWV31DHE8HIMdEsPGuCXPz0PMvShfl) code is licensed under: [Creative Commons](https://creativecommons.org) and [CC-BY license](https://creativecommons.org/licenses/by/4.0/)
 
 Get your access token to get the data:
 
