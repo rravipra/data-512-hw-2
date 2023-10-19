@@ -142,17 +142,21 @@ I found out that some states that have much lower population seem to produce the
 
 Something that surprised me about the findings was the fact that none of the top states in the US that are considered to have the best educational institutions, libraries etc. directly reflected the highest quality of articles. For example: it was surprising to see New York, California and Florida in the bottom 10 of the states that produced the highest quality articles. They are also the states in the US that fall in the top 10 most literate states whereas I noticed that states like Vermont, South Dakota which comparatively have a much lower literacy rate and population seemed to have much higher quality of articles.
 
-Answering specific questions:
+**Answering specific questions:**
 
-What biases did you expect to find in the data (before you started working with it), and why?
+**What biases did you expect to find in the data (before you started working with it), and why?**
 
 Before I started working with the data, I expected to find biases towards states with larger cities, popular landmarks, and those having a rich historical background. The reason for that was primarily because the mentioned factors often contribute to a state's prominence and representation in public discourse and thus leading to more articles and potentially higher quality content.
 
-What (potential) sources of bias did you discover in the course of your data processing and analysis?
+**What (potential) sources of bias did you discover in the course of your data processing and analysis?**
 
-Upon closer examination of the data, there were several potential sources of bias that became evident. Editorial focus appeared to play a significant role, with certain states possibly having a more active Wikipedia contributor community. Additionally, there was an indication that states with better access to resources, like academic institutions or libraries, had articles of superior quality.States with better access to resources did not seem to necessariy have the top articles per capita with the highest quality.
+Upon closer examination of the data, there were several potential sources of bias that became evident. Editorial focus appeared to play a significant role, with certain states possibly having a more active Wikipedia contributor community. I think that this would be a main potential cause since there was an indication that states with better access to resources, like academic institutions or libraries did not necessarily have articles of superior quality.
 
-What might your results suggest about (English) Wikipedia as a data source?
+**What might your results suggest about (English) Wikipedia as a data source?**
 
 As wikipedia is crowd sourced I would say that it is not necessarily the best data source to get the best quality results. The results show that the top states in the US that have a better access to resources, like academic institutions, are not necessarily the states that provide articles of superior quality. This is not something that you would expect in the results so it can be inferred that data sources other than wikipedia also need to be taken into consideration for a better analysis to give us the best results.
+
+**How might a researcher supplement or transform this dataset to potentially correct for the limitations/biases you observed?**
+
+One of the best ways a researcher can do this would be by incorporating additional data sources. They could use data from local News and publications by integrating articles, news stories, and other forms of local content to capture events or topics that may not be represented on a global platform like Wikipedia. Further they could also collaborate with universities and schools to gather research papers, theses, and other academic materials related to the states. This can give insights into information that may not be mainstream.
 
