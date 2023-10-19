@@ -12,7 +12,7 @@ I will also be performing an analysis of how the coverage of US cities on Wikipe
 
 # Data:
 
-**(Note: Please refer to the documentation in the notebooks for detailed information regarding the below links and how they are used to extract the data:)**
+**Note: Please refer to the documentation in the notebooks for detailed information regarding the below links and how they are used to extract the data:**
 
 The data can be acquired from the [MediaWiki REST API for the EN Wikipedia](https://www.mediawiki.org/wiki/API:Main_page) for the page_info from which you can extract the 'title' and the 'lastrevid' which you will need to then use it to extract the ORES scores from the LiftWing ML Service API. (Please refer to the code in the notebooks for more info on how to extract the data)
 
