@@ -55,6 +55,8 @@ Combining_and_Analysis.ipynb: This file consists of that analysis and combining 
 
 # Data Files created from the code:
 
+These data files can be found under created_data_files folder:
+
 1) ores_scores.csv
 2) page_info_per_city.csv
 3) wp_scored_city_articles_by_state.csv
