@@ -22,19 +22,20 @@ The data can be acquired from the [MediaWiki REST API for the EN Wikipedia](http
 
 # Code files:
 
-The notebook files in this repository are:
+The notebook files in this repository are present in the folder called Code_files and the files in that are:
 
 get_ores_scores.ipynb : This file consists of the some code in the beginning from the [wp_page_info_example.ipynb](https://drive.google.com/drive/folders/1FtvWV31DHE8HIMdEsPGuCXPz0PMvShfl) with a few changes which I have explicitly mentioned in the notebook.
 
 get_page_info.ipynb : This file consists of the some code in the beginning from the [wp_ores_liftwing_example.ipynb](https://drive.google.com/drive/folders/1FtvWV31DHE8HIMdEsPGuCXPz0PMvShfl) with a few changes which I have explicitly mentioned in the notebook.
 
-Combining_and_Analysis.ipynb file
+Combining_and_Analysis.ipynb: This file consists of that analysis and combining all the datasets to make a single dataset.
 
 
 # Data Files created from the code:
 
 1) ores_scores.csv
-2) wp_scored_city_articles_by_state.csv
+2) page_info_per_city.csv
+3) wp_scored_city_articles_by_state.csv
 
 **Structure of the CSV files:**
 For ores_scores.csv
@@ -45,6 +46,11 @@ For ores_scores.csv
 
 **prediction**: The prediction retrieved from the ORES scores.
 
+For page_info_per_city.csv
+
+**title**: The title (i.e the city, state).
+
+**rev_id**: The last revision id.
 
 For wp_scored_city_articles_by_state.csv
 
